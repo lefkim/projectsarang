@@ -185,7 +185,7 @@ nav{
   .hero-title{white-space:normal;}
 }
 @media(max-width:560px){
-  /* 네비 — 이미지 위에 완전히 녹이기 */
+  /* 네비 — 이미지 위 */
   nav{
     padding:14px 20px;
     background:transparent;
@@ -198,13 +198,13 @@ nav{
   .nav-links a:hover,.nav-links a.active{color:var(--white);}
   .nav-links{gap:16px;}
 
-  /* 히어로 블록 */
+  /* 히어로 — 100vh 풀스크린 */
   .hero{
     display:block;
     background:var(--black);
   }
 
-  /* 이미지 — 100vh */
+  /* 이미지 wrap — 100vh */
   .hero-img-wrap{
     position:relative;
     width:100%;
@@ -226,59 +226,62 @@ nav{
     display:block;
   }
 
-  /* 상단 그라데이션 — 헤더 가독성 */
+  /* 상단 그라데이션 — 헤더 */
   .hero-img-wrap::before{
     content:'';
     position:absolute;
     top:0;left:0;right:0;
-    height:120px;
-    background:linear-gradient(to bottom,rgba(0,0,0,0.5),transparent);
+    height:140px;
+    background:linear-gradient(to bottom,rgba(0,0,0,0.65),transparent);
     pointer-events:none;
-    z-index:1;
+    z-index:2;
   }
 
-  /* 하단 그라데이션 */
+  /* 하단 그라데이션 — 텍스트 가독성 */
   .hero-img-wrap::after{
     content:'';
     position:absolute;
     bottom:0;left:0;right:0;
-    height:25%;
-    background:linear-gradient(to top,rgba(0,0,0,0.5),transparent);
+    height:55%;
+    background:linear-gradient(to top,rgba(0,0,0,0.97) 0%,rgba(0,0,0,0.7) 50%,transparent 100%);
     pointer-events:none;
-    z-index:1;
+    z-index:2;
   }
 
   .hero-caption{display:none;}
 
-  /* 텍스트 블록 — 이미지 아래 */
+  /* 텍스트+버튼 — 이미지 위 하단 오버레이 */
   .hero-text{
-    position:static;
-    background:var(--black);
-    padding:36px 24px 40px;
+    position:absolute;
+    bottom:0;left:0;right:0;
+    z-index:10;
+    background:transparent;
+    padding:24px 24px 44px;
   }
   .hero-title{
     color:var(--white);
-    font-size:clamp(22px,6vw,32px);
+    font-size:clamp(20px,5.5vw,30px);
     white-space:normal;
-    margin-bottom:12px;
+    margin-bottom:8px;
+    line-height:1.2;
   }
   .hero-copy{
-    color:rgba(255,255,255,0.65);
+    color:rgba(255,255,255,0.7);
     font-size:13px;
-    line-height:1.8;
-    margin-bottom:24px;
+    line-height:1.7;
+    margin-bottom:20px;
   }
   .hero-btns{margin-top:0;gap:8px;flex-wrap:wrap;}
-  .btn{padding:12px 18px;font-size:12px;}
+  .btn{padding:11px 16px;font-size:11px;}
   .btn-red{background:var(--red);color:var(--white);border-color:var(--red);}
   .btn-outline{border-color:rgba(255,255,255,0.4);color:var(--white);}
-  .btn-dark{background:rgba(255,255,255,0.1);color:var(--white);border-color:rgba(255,255,255,0.15);}
+  .btn-dark{background:rgba(255,255,255,0.1);color:var(--white);border-color:rgba(255,255,255,0.2);}
 
-  /* 포인트 */
+  /* 포인트 — 스크롤 후 검정으로 */
   .points{
     grid-template-columns:1fr;
     background:var(--black);
-    border-top:1px solid #222;
+    border-top:none;
   }
   .point{
     padding:28px 24px;
