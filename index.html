@@ -173,12 +173,32 @@ nav{
 
 @media(max-width:900px){
   nav{padding:16px 24px;}
+  .nav-links{gap:20px;}
   .hero{grid-template-columns:1fr;}
-  .hero-img{min-height:50vw;}
-  .hero-text{padding:48px 32px;}
-  .points{grid-template-columns:1fr;}
-  .point{border-right:none;border-bottom:1px solid #e8e8e8;padding:36px 32px;}
+  .hero-img-wrap{order:1;}
+  .hero-img{min-height:60vw;}
+  .hero-img img{max-height:60vw;}
+  .hero-text{order:2;padding:48px 32px;}
+  .points{grid-template-columns:1fr 1fr;order:3;}
+  .point{border-right:none;border-bottom:1px solid #e8e8e8;padding:32px 24px;}
   .hero-btns{flex-direction:row;flex-wrap:wrap;}
+  .hero-title{white-space:normal;}
+}
+@media(max-width:560px){
+  nav{padding:14px 20px;}
+  .nav-links{gap:14px;}
+  .nav-links a{font-size:11px;}
+  .hero-img{min-height:70vw;}
+  .hero-img img{max-height:70vw;}
+  .hero-text{padding:36px 20px;}
+  .hero-copy{font-size:16px;}
+  .points{grid-template-columns:1fr;}
+  .point{padding:28px 20px;}
+  .point-title{font-size:16px;}
+  .point-body{font-size:13px;}
+  .btn{padding:14px 24px;font-size:12px;}
+  .hero-btns{gap:8px;}
+  .hero-caption{font-size:10px;}
 }
 </style>
 </head>
@@ -223,12 +243,12 @@ nav{
     <div class="point">
       <p class="point-num">02</p>
       <p class="point-title">〈사랑〉이 있는 곳에 사람이 머뭅니다</p>
-      <p class="point-body">멈추고, 사진을 찍고, 공유합니다. 〈사랑〉이 스스로 홍보가 됩니다.</p>
+      <p class="point-body">〈사랑〉 앞에서 사람들은 멈춥니다. 사진을 찍고, SNS에 공유합니다. 조각이 스스로 홍보가 됩니다.</p>
     </div>
     <div class="point">
       <p class="point-num">03</p>
       <p class="point-title">〈사랑〉은 기획이 준비되어 있습니다</p>
-      <p class="point-body">설치부터 운영까지, 실행 가능한 제안서를 바로 드릴 수 있습니다.</p>
+      <p class="point-body">설치 위치 선정부터 제작, 운영까지 구체적인 제안서를 바로 드릴 수 있습니다.</p>
     </div>
   </div>
 

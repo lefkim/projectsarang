@@ -33,7 +33,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .divider{width:40px;height:2px;background:var(--red);margin:0 auto 40px;}
 .coming{font-weight:700;font-size:14px;letter-spacing:0.2em;color:var(--gray);text-transform:uppercase;}
 
-@media(max-width:768px){nav{padding:16px 24px;}.nav-links{gap:20px;}}
+@media(max-width:560px){
+  nav{padding:14px 20px;}
+  .nav-links{gap:14px;}
+  .nav-links a{font-size:11px;}
+  .name{font-size:clamp(28px,8vw,56px);}
+}
 </style>
 </head>
 <body>
