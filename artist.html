@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>작가 — Project Sarang</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#C8102E;--black:#111;--white:#fff;--gray:#777;--mid:#444;--off:#F4F2EF;}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--white);color:var(--black);-webkit-font-smoothing:antialiased;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(255,255,255,0.97);border-bottom:1px solid #eee;}
+.nav-logo{font-weight:900;font-size:15px;color:var(--red);text-decoration:none;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-weight:700;font-size:12px;color:var(--mid);text-decoration:none;letter-spacing:0.05em;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--red);}
+
+.wrap{
+  min-height:100vh;
+  padding-top:72px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:120px 32px;
+}
+
+.tag{font-weight:700;font-size:11px;letter-spacing:0.25em;color:var(--red);text-transform:uppercase;margin-bottom:24px;}
+.name{font-weight:900;font-size:clamp(36px,6vw,72px);letter-spacing:-0.02em;color:var(--black);margin-bottom:16px;}
+.name-en{font-weight:400;font-size:16px;color:var(--gray);letter-spacing:0.1em;margin-bottom:48px;}
+.divider{width:40px;height:2px;background:var(--red);margin:0 auto 40px;}
+.coming{font-weight:700;font-size:14px;letter-spacing:0.2em;color:var(--gray);text-transform:uppercase;}
+
+@media(max-width:768px){nav{padding:16px 24px;}.nav-links{gap:20px;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">PROJECT SARANG</a>
+  <ul class="nav-links">
+    <li><a href="project.html">프로젝트</a></li>
+    <li><a href="artist.html" class="active">작가</a></li>
+    <li><a href="contact.html">문의</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+  <p class="tag">Artist</p>
+  <h1 class="name">김인태</h1>
+  <p class="name-en">KIM IN-TAE</p>
+  <div class="divider"></div>
+  <p class="coming">Coming Soon</p>
+</div>
+
+</body>
+</html>
