@@ -185,20 +185,84 @@ nav{
   .hero-title{white-space:normal;}
 }
 @media(max-width:560px){
-  nav{padding:14px 20px;}
+  nav{padding:14px 20px;background:transparent;border-bottom:none;}
+  .nav-logo{color:var(--white);}
+  .nav-links a{color:rgba(255,255,255,0.7);}
+  .nav-links a:hover{color:var(--white);}
   .nav-links{gap:14px;}
   .nav-links a{font-size:11px;}
-  .hero-img{min-height:70vw;}
-  .hero-img img{max-height:70vw;}
-  .hero-text{padding:36px 20px;}
-  .hero-copy{font-size:16px;}
-  .points{grid-template-columns:1fr;}
-  .point{padding:28px 20px;}
-  .point-title{font-size:16px;}
-  .point-body{font-size:13px;}
-  .btn{padding:14px 24px;font-size:12px;}
-  .hero-btns{gap:8px;}
-  .hero-caption{font-size:10px;}
+
+  /* 모바일 풀스크린 히어로 */
+  .hero{
+    display:block;
+    position:relative;
+    height:100vh;
+    overflow:hidden;
+  }
+  .hero-img-wrap{
+    position:absolute;
+    inset:0;
+    display:block;
+  }
+  .hero-img{
+    height:100%;
+    min-height:100%;
+    padding:0;
+    background:#111;
+  }
+  .hero-img img{
+    width:100%;
+    height:100%;
+    max-height:none;
+    object-fit:contain;
+  }
+  .hero-caption{display:none;}
+
+  /* 그라데이션 오버레이 */
+  .hero-img-wrap::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+      to top,
+      rgba(0,0,0,0.95) 0%,
+      rgba(0,0,0,0.5) 45%,
+      rgba(0,0,0,0.1) 70%
+    );
+    pointer-events:none;
+  }
+
+  /* 텍스트 하단 오버레이 */
+  .hero-text{
+    position:absolute;
+    bottom:0;left:0;right:0;
+    padding:32px 24px 40px;
+    background:transparent;
+    z-index:10;
+  }
+  .hero-tag{color:var(--red);}
+  .hero-title{color:var(--white);font-size:clamp(28px,7vw,44px);}
+  .hero-copy{color:rgba(255,255,255,0.85);font-size:15px;margin-top:12px;}
+  .hero-btns{margin-top:24px;gap:8px;flex-wrap:wrap;}
+  .btn{padding:12px 20px;font-size:12px;}
+  .btn-red{background:var(--red);color:var(--white);}
+  .btn-outline{border-color:rgba(255,255,255,0.6);color:var(--white);}
+  .btn-dark{background:rgba(255,255,255,0.15);color:var(--white);border-color:rgba(255,255,255,0.3);}
+
+  /* 포인트 섹션 */
+  .points{
+    position:relative;
+    grid-template-columns:1fr;
+    background:var(--black);
+  }
+  .point{
+    padding:28px 24px;
+    border-bottom:1px solid #222;
+    border-right:none;
+  }
+  .point-num{color:var(--red);}
+  .point-title{color:var(--white);font-size:16px;}
+  .point-body{color:rgba(255,255,255,0.55);font-size:13px;}
 }
 </style>
 </head>
@@ -228,8 +292,8 @@ nav{
     <p class="hero-copy">지역과 기업의 새로운 랜드마크,<br>공공조각 〈사랑〉을 제안합니다.</p>
     <div class="hero-btns">
       <a href="project.html" class="btn btn-red">프로젝트 소개</a>
-      <a href="artist.html" class="btn btn-outline">작가 소개</a>
       <a href="contact.html" class="btn btn-dark">문의하기</a>
+      <a href="artist.html" class="btn btn-outline">작가 소개</a>
     </div>
   </div>
 
