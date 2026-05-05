@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" id="root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -226,6 +226,11 @@ section{padding:100px 80px;}
   .why-num{font-size:36px;}
   .local-num{font-size:32px;}
 }
+
+.lang-toggle{display:flex;align-items:center;gap:0;margin-left:24px;border:1.5px solid rgba(255,255,255,0.3);border-radius:4px;overflow:hidden;flex-shrink:0;}
+.lang-btn{font-weight:700;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,0.6);transition:all 0.15s;}
+.lang-btn.active{background:var(--red);color:#fff;}
+.lang-btn:hover:not(.active){color:#fff;}
 </style>
 </head>
 <body>
@@ -233,17 +238,21 @@ section{padding:100px 80px;}
 <nav class="dark">
   <a href="/" class="nav-logo">PROJECT SARANG</a>
   <ul class="nav-links">
-    <li><a href="/project" class="active">프로젝트</a></li>
-    <li><a href="/artist">작가</a></li>
-    <li><a href="/contact">문의</a></li>
+    <li><a href="/project" class="active" data-ko="프로젝트" data-en="Project">프로젝트</a></li>
+    <li><a href="/artist" data-ko="작가" data-en="Artist">작가</a></li>
+    <li><a href="/contact" data-ko="문의" data-en="Contact">문의</a></li>
   </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('ko')">KO</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
 </nav>
 
 <section class="page-hero">
   
   <div class="page-hero-content">
     <p class="page-hero-tag">Project Sarang · 2026</p>
-    <h1 class="page-hero-title">프로젝트 소개</h1>
+    <h1 class="page-hero-title" data-ko="프로젝트 소개" data-en="About Project">프로젝트 소개</h1>
 
   </div>
 </section>
@@ -313,8 +322,8 @@ section{padding:100px 80px;}
 <!-- CONCEPT -->
 <section class="concept">
   <span class="section-label">Concept</span>
-  <h2 class="section-headline">한글의 조형성을 기반으로<br>직관적이고 소통 가능한 현대미술<br>《사랑》</h2>
-  <p class="concept-body">
+  <h2 class="section-headline" data-ko="한글의 조형성을 기반으로<br>직관적이고 소통 가능한 현대미술<br>《사랑》" data-en="Contemporary Art 〈Sarang〉:<br>Intuitive, Communicable,<br>Rooted in Hangul Form">한글의 조형성을 기반으로<br>직관적이고 소통 가능한 현대미술<br>《사랑》</h2>
+  <p class="concept-body" data-en="〈Sarang〉 is not a difficult work. Any Korean instantly reads '사랑' upon seeing it. For foreign visitors too, 'Sarang' is not an unfamiliar word. The sculptural Hangul letterforms invite foreigners into a joyful experience of reading.<br><br>The intuitive visual form of 〈Sarang〉 holds deeper meaning. The artist conceives the 'ㅅ' at the top as the character for 'person' (人), and realizes a structure combining the three basic forms — circle, square, triangle — connected to Heaven, Earth, and Humanity.<br><br>People stand beside 〈Sarang〉. Alone is fine; together is even better. The moment they stand together, new meaning begins. It goes beyond a photo — it is the experience of becoming the artwork itself.<br><br>In an age where K-culture moves the world, the form of Hangul becomes the face of cities and brands. Wherever 〈Sarang〉 stands, people connect." data-ko="《사랑》은 난해하지 않은 작품이다. 한국인이라면 보는 순간, '사랑'을 읽어낸다. 한국을 방문한 외국인에게도 '사랑'은 낯설지 않은 단어이다. 조형적으로 재구성된 한글의 자모 형태는 이방인들에게 즐거운 읽기 체험으로 연결될 수 있다.<br><br>물론 공공조각 《사랑》의 직관적인 외적 조형은 결코 단순하지 않은 의미를 품는다. 작가는 작품 상단의 'ㅅ'을 '사람 인(人)'으로도 사유하며, 천·지·인과 연결되는 원방각(○□△) 기본형의 결합 구조를 구현한다.<br><br>《사랑》의 옆에 사람이 선다. 혼자여도 좋고, 둘이라면 더 좋다. 함께 서는 순간, 새로운 사랑의 의미가 시작된다. 사진을 넘어서서, 스스로 작품이 되는 경험이다.<br><br>K-컬처가 세계를 움직이는 지금, 한글의 조형성이 도시와 기업의 얼굴이 된다. 《사랑》이 있는 곳에서 사람들은 연결된다.">
     《사랑》은 난해하지 않은 작품이다. 한국인이라면 보는 순간, '사랑'을 읽어낸다. 한국을 방문한 외국인에게도 '사랑'은 낯설지 않은 단어이다. 조형적으로 재구성된 한글의 자모 형태는 이방인들에게 즐거운 읽기 체험으로 연결될 수 있다.<br><br>
     물론 공공조각 《사랑》의 직관적인 외적 조형은 결코 단순하지 않은 의미를 품는다. 작가는 작품 상단의 'ㅅ'을 '사람 인(人)'으로도 사유하며, 천·지·인과 연결되는 원방각(○□△) 기본형의 결합 구조를 구현한다.<br><br>
     《사랑》의 옆에 사람이 선다. 혼자여도 좋고, 둘이라면 더 좋다. 함께 서는 순간, 새로운 사랑의 의미가 시작된다. 사진을 넘어서서, 스스로 작품이 되는 경험이다.<br><br>
@@ -324,22 +333,22 @@ section{padding:100px 80px;}
 
 <!-- WHY -->
 <section class="why">
-  <span class="section-label">Why Now · Why 사랑</span>
+  <span class="section-label" data-ko="Why Now · Why 사랑" data-en="Why Now · Why Sarang">Why Now · Why 사랑</span>
   <div class="why-grid">
     <div class="why-item">
       <p class="why-num">01</p>
-      <h3 class="why-title">한글이 글로벌 트렌드가 된 시대</h3>
-      <p class="why-body">BTS, <오징어 게임>, K-뷰티 등 K-콘텐츠, K-컬처의 시대. 세계는 한국어에 눈을 뜨고, 한국어의 매력에 호감을 갖는다. 하지만 한글 조형이 도시의 아이콘으로서 등장한 적은 없다. 《사랑》은 한글 조형성을 기반으로 한 작품화를 통해 새로운 문화 시대의 상징을 창출한다.</p>
+      <h3 class="why-title" data-ko="한글이 글로벌 트렌드가 된 시대" data-en="The Era of Hangul as a Global Trend">한글이 글로벌 트렌드가 된 시대</h3>
+      <p class="why-body" data-ko="BTS, &lt;오징어 게임&gt;, K-뷰티 등 K-콘텐츠, K-컬처의 시대. 세계는 한국어에 눈을 뜨고, 한국어의 매력에 호감을 갖는다. 하지만 한글 조형이 도시의 아이콘으로서 등장한 적은 없다. 《사랑》은 한글 조형성을 기반으로 한 작품화를 통해 새로운 문화 시대의 상징을 창출한다." data-en="In the age of BTS, Squid Game, and K-beauty, the world is awakening to Korean. Yet Hangul form has never appeared as an urban icon. 〈Sarang〉 creates a symbol for a new cultural era by transforming Hangul's visual language into art.">BTS, <오징어 게임>, K-뷰티 등 K-콘텐츠, K-컬처의 시대. 세계는 한국어에 눈을 뜨고, 한국어의 매력에 호감을 갖는다. 하지만 한글 조형이 도시의 아이콘으로서 등장한 적은 없다. 《사랑》은 한글 조형성을 기반으로 한 작품화를 통해 새로운 문화 시대의 상징을 창출한다.</p>
     </div>
     <div class="why-item">
       <p class="why-num">02</p>
-      <h3 class="why-title">포토존이 아니라, 목적지가 되는 작품</h3>
-      <p class="why-body">내국인, 외국인 모두 친숙하거나 낯선 장소에서의 경험을 추구한다. 공공조각 《사랑》은 포토존이 아닌 경험의 목적지로서, 그것이 위치한 장소성을 극대화한다.</p>
+      <h3 class="why-title" data-ko="포토존이 아니라, 목적지가 되는 작품" data-en="Not a Photo Spot — a Destination">포토존이 아니라, 목적지가 되는 작품</h3>
+      <p class="why-body" data-ko="내국인, 외국인 모두 친숙하거나 낯선 장소에서의 경험을 추구한다. 공공조각 《사랑》은 포토존이 아닌 경험의 목적지로서, 그것이 위치한 장소성을 극대화한다." data-en="Both locals and tourists seek meaningful experiences. 〈Sarang〉 is not a photo spot — it is a destination, maximizing the sense of place where it stands.">내국인, 외국인 모두 친숙하거나 낯선 장소에서의 경험을 추구한다. 공공조각 《사랑》은 포토존이 아닌 경험의 목적지로서, 그것이 위치한 장소성을 극대화한다.</p>
     </div>
     <div class="why-item">
       <p class="why-num">03</p>
-      <h3 class="why-title">번역이 필요 없는 사랑의 감정</h3>
-      <p class="why-body">사랑의 감정은 언어를 초월한다. 《사랑》은 그 단어가 환기하는 보편적 감정의 주제를 통해 갖은 상황에 놓인 사람들의 정서를 충족시킬 수 있다.</p>
+      <h3 class="why-title" data-ko="번역이 필요 없는 사랑의 감정" data-en="The Feeling of Love Needs No Translation">번역이 필요 없는 사랑의 감정</h3>
+      <p class="why-body" data-ko="사랑의 감정은 언어를 초월한다. 《사랑》은 그 단어가 환기하는 보편적 감정의 주제를 통해 갖은 상황에 놓인 사람들의 정서를 충족시킬 수 있다." data-en="The emotion of love transcends language. 〈Sarang〉 resonates with people across all situations through the universal theme that the word evokes.">사랑의 감정은 언어를 초월한다. 《사랑》은 그 단어가 환기하는 보편적 감정의 주제를 통해 갖은 상황에 놓인 사람들의 정서를 충족시킬 수 있다.</p>
     </div>
   </div>
 </section>
@@ -371,9 +380,9 @@ section{padding:100px 80px;}
   </div>
 
 <div class="local-intro">
-    <h2 class="local-intro-title">사랑은 어디에나 있다</h2>
-    <p class="local-intro-en">Sarang is Everywhere</p>
-    <p class="local-intro-desc">
+    <h2 class="local-intro-title" data-ko="사랑은 어디에나 있다" data-en="Sarang Is Everywhere">사랑은 어디에나 있다</h2>
+    <p class="local-intro-en" style="display:none;"></p>
+    <p class="local-intro-desc" data-ko="공공조각 《사랑》은 장소에 제한성을 갖지 않는다.<br>당신의 도시, 당신의 공간에 《사랑》이 찾아온다." data-en="The public sculpture 〈Sarang〉 knows no boundaries.<br>It comes to your city, your space.">
       공공조각 《사랑》은 장소에 제한성을 갖지 않는다.<br>
       당신의 도시, 당신의 공간에 《사랑》이 찾아온다.
     </p>
@@ -381,21 +390,21 @@ section{padding:100px 80px;}
   <div class="local-grid">
     <div class="local-card">
       <p class="local-num">01</p>
-      <p class="local-kr">성수의 《사랑》</p>
-      <p class="local-en">Sarang in Seongsu</p>
-      <p class="local-desc">성수동은 새롭고도 복합적인 문화적 트렌드가 추구되는 장소로서, 이미 세계인이 집결하는 서울의 핫플레이스이다. 글로벌 패션브랜드 매장, 팝업스토어, 카페, 식당 등 수많은 상가가 눈을 사로잡는 거리. 여기에서도 《사랑》은 성수동 특유의 건축물 조형을 배경으로 유니크한 예술적 존재감을 드러낸다. 또한 SNS 포토존 문화가 정착한 성수동에서 《사랑》은 자연스럽게 만남과 쉼의 장소가 될 것이다. 성동구의 도시 브랜딩 의지와 결합할 때, 《사랑》은 강력한 랜드마크로 완성된다.</p>
+      <p class="local-kr" data-ko="성수의 《사랑》" data-en="〈Sarang〉 in Seongsu">성수의 《사랑》</p>
+      <p class="local-en" style="display:none;"></p>
+      <p class="local-desc" data-ko="성수동은 새롭고도 복합적인 문화적 트렌드가 추구되는 장소로서, 이미 세계인이 집결하는 서울의 핫플레이스이다. 글로벌 패션브랜드 매장, 팝업스토어, 카페, 식당 등 수많은 상가가 눈을 사로잡는 거리. 여기에서도 《사랑》은 성수동 특유의 건축물 조형을 배경으로 유니크한 예술적 존재감을 드러낸다. 또한 SNS 포토존 문화가 정착한 성수동에서 《사랑》은 자연스럽게 만남과 쉼의 장소가 될 것이다. 성동구의 도시 브랜딩 의지와 결합할 때, 《사랑》은 강력한 랜드마크로 완성된다." data-en="Seongsu is Seoul's hottest neighborhood — a hub of complex cultural trends drawing visitors from around the world. Global fashion brands, pop-up stores, cafés, and restaurants line its streets. Against Seongsu's distinctive industrial architecture, 〈Sarang〉 reveals a unique artistic presence. In a neighborhood where photo culture is deeply rooted, 〈Sarang〉 will naturally become a place for gathering and rest. Combined with Seongdong-gu's ambition for urban branding, 〈Sarang〉 will stand as a powerful landmark.">성수동은 새롭고도 복합적인 문화적 트렌드가 추구되는 장소로서, 이미 세계인이 집결하는 서울의 핫플레이스이다. 글로벌 패션브랜드 매장, 팝업스토어, 카페, 식당 등 수많은 상가가 눈을 사로잡는 거리. 여기에서도 《사랑》은 성수동 특유의 건축물 조형을 배경으로 유니크한 예술적 존재감을 드러낸다. 또한 SNS 포토존 문화가 정착한 성수동에서 《사랑》은 자연스럽게 만남과 쉼의 장소가 될 것이다. 성동구의 도시 브랜딩 의지와 결합할 때, 《사랑》은 강력한 랜드마크로 완성된다.</p>
     </div>
     <div class="local-card">
       <p class="local-num">02</p>
-      <p class="local-kr">서촌의 《사랑》</p>
-      <p class="local-en">Sarang in Seochon</p>
-      <p class="local-desc">경복궁의 서쪽, 한옥과 골목이 살아 있는 서촌. 걷고, 생각하고, 멈추어 서고, 다시 걷고. 반짝이는 햇빛과 바람 속에 하루 종일 걸어도 지치지 않을 서촌의 어딘가에 《사랑》이 놓인다. 서촌은 역사적으로 문인과 예술가들의 예술 정신이 면면히 흐르는 곳이기도 하다. 오래된 것과 현대적인 것이 교차하고, 글과 그림의 예술적 흔적이 어우러지는 장소성 속에서 한글의 조형미를 품은 《사랑》은 그 직관적인 형태와 아름다운 색을 서촌에 더한다. </p>
+      <p class="local-kr" data-ko="서촌의 《사랑》" data-en="〈Sarang〉 in Seochon">서촌의 《사랑》</p>
+      <p class="local-en" style="display:none;"></p>
+      <p class="local-desc" data-ko="경복궁의 서쪽, 한옥과 골목이 살아 있는 서촌. 걷고, 생각하고, 멈추어 서고, 다시 걷고. 반짝이는 햇빛과 바람 속에 하루 종일 걸어도 지치지 않을 서촌의 어딘가에 《사랑》이 놓인다. 서촌은 역사적으로 문인과 예술가들의 예술 정신이 면면히 흐르는 곳이기도 하다. 오래된 것과 현대적인 것이 교차하고, 글과 그림의 예술적 흔적이 어우러지는 장소성 속에서 한글의 조형미를 품은 《사랑》은 그 직관적인 형태와 아름다운 색을 서촌에 더한다." data-en="West of Gyeongbokgung, Seochon is alive with hanok houses and winding alleys. Walk, think, pause, walk again. 〈Sarang〉 settles somewhere in this tireless neighborhood bathed in sunlight and wind. Seochon has long been a place where the artistic spirit of writers and artists flows through history. Where old and new intersect and traces of literary and visual art interweave, 〈Sarang〉 adds its intuitive form and beautiful color to Seochon.">경복궁의 서쪽, 한옥과 골목이 살아 있는 서촌. 걷고, 생각하고, 멈추어 서고, 다시 걷고. 반짝이는 햇빛과 바람 속에 하루 종일 걸어도 지치지 않을 서촌의 어딘가에 《사랑》이 놓인다. 서촌은 역사적으로 문인과 예술가들의 예술 정신이 면면히 흐르는 곳이기도 하다. 오래된 것과 현대적인 것이 교차하고, 글과 그림의 예술적 흔적이 어우러지는 장소성 속에서 한글의 조형미를 품은 《사랑》은 그 직관적인 형태와 아름다운 색을 서촌에 더한다. </p>
     </div>
     <div class="local-card">
       <p class="local-num">+</p>
-      <p class="local-kr">[    ]에 사랑이 왔어요</p>
-      <p class="local-en">Sarang in [    ]</p>
-      <p class="local-desc">공공미술 《사랑》은 지역 커스터마이징이 가능한 구조이다. 서울 전역과 지방, 나아가 국외 어느 곳이든 《사랑》의 장소가 될 수 있다. </p>
+      <p class="local-kr" data-ko="[    ]에 사랑이 왔어요" data-en="〈Sarang〉 in [    ]">[    ]에 사랑이 왔어요</p>
+      <p class="local-en" style="display:none;"></p>
+      <p class="local-desc" data-ko="공공미술 《사랑》은 지역 커스터마이징이 가능한 구조이다. 서울 전역과 지방, 나아가 국외 어느 곳이든 《사랑》의 장소가 될 수 있다." data-en="〈Sarang〉 is designed for local customization. Anywhere in Seoul, across Korea, or even beyond — any place can become home to 〈Sarang〉.">공공미술 《사랑》은 지역 커스터마이징이 가능한 구조이다. 서울 전역과 지방, 나아가 국외 어느 곳이든 《사랑》의 장소가 될 수 있다. </p>
     </div>
   </div>
 </section>
@@ -406,23 +415,23 @@ section{padding:100px 80px;}
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:40px;" class="spec-grid">
     <div>
       <p style="font-weight:900;font-size:11px;letter-spacing:0.2em;color:var(--red);text-transform:uppercase;margin-bottom:12px;">SIZE</p>
-      <p style="font-weight:900;font-size:20px;color:var(--black);margin-bottom:8px;">자유 제작</p>
-      <p style="font-size:13px;font-weight:400;line-height:2;color:var(--gray);">설치 장소와 랜드마크로서의 제반 맥락에 맞게 최적의 크기로 제작됩니다.</p>
+      <p style="font-weight:900;font-size:20px;color:var(--black);margin-bottom:8px;" data-ko="자유 제작" data-en="Custom Size">자유 제작</p>
+      <p style="font-size:13px;font-weight:400;line-height:2;color:var(--gray);" data-ko="설치 장소와 랜드마크로서의 제반 맥락에 맞게 최적의 크기로 제작됩니다." data-en="Produced to the optimal size for the installation site and its context as a landmark.">설치 장소와 랜드마크로서의 제반 맥락에 맞게 최적의 크기로 제작됩니다.</p>
     </div>
     <div>
       <p style="font-weight:900;font-size:11px;letter-spacing:0.2em;color:var(--red);text-transform:uppercase;margin-bottom:12px;">MATERIAL</p>
-      <p style="font-weight:900;font-size:20px;color:var(--black);margin-bottom:8px;">스틸 / FRP</p>
-      <p style="font-size:13px;font-weight:400;line-height:2;color:var(--gray);">고광택 도장 스틸 또는 FRP. 실외 설치에 적합한 내구성을 갖춥니다.</p>
+      <p style="font-weight:900;font-size:20px;color:var(--black);margin-bottom:8px;" data-ko="스틸 / FRP" data-en="Steel / FRP">스틸 / FRP</p>
+      <p style="font-size:13px;font-weight:400;line-height:2;color:var(--gray);" data-ko="고광택 도장 스틸 또는 FRP. 실외 설치에 적합한 내구성을 갖춥니다." data-en="High-gloss painted steel or FRP. Built with durability suited for outdoor installation.">고광택 도장 스틸 또는 FRP. 실외 설치에 적합한 내구성을 갖춥니다.</p>
     </div>
     <div>
       <p style="font-weight:900;font-size:11px;letter-spacing:0.2em;color:var(--red);text-transform:uppercase;margin-bottom:12px;">COLOR</p>
-      <p style="font-weight:900;font-size:20px;color:var(--black);margin-bottom:8px;">커스텀 제작 가능</p>
-      <p style="font-size:13px;font-weight:400;line-height:2;color:var(--gray);">지역이나 기업 등의 브랜드 컬러를 적용한 제작이 가능합니다.</p>
+      <p style="font-weight:900;font-size:20px;color:var(--black);margin-bottom:8px;" data-ko="커스텀 제작 가능" data-en="Custom Color Available">커스텀 제작 가능</p>
+      <p style="font-size:13px;font-weight:400;line-height:2;color:var(--gray);" data-ko="지역이나 기업 등의 브랜드 컬러를 적용한 제작이 가능합니다." data-en="Brand colors of a region or company can be applied to the production.">지역이나 기업 등의 브랜드 컬러를 적용한 제작이 가능합니다.</p>
     </div>
     <div>
       <p style="font-weight:900;font-size:11px;letter-spacing:0.2em;color:var(--red);text-transform:uppercase;margin-bottom:12px;">MAINTENANCE</p>
-      <p style="font-weight:900;font-size:20px;color:var(--black);margin-bottom:8px;">관리 용이</p>
-      <p style="font-size:13px;font-weight:400;line-height:2;color:var(--gray);">설치 후 별도의 전문 인력 없이 관리가 가능하며, 유지 보수의 부담이 적습니다.</p>
+      <p style="font-weight:900;font-size:20px;color:var(--black);margin-bottom:8px;" data-ko="관리 용이" data-en="Easy Maintenance">관리 용이</p>
+      <p style="font-size:13px;font-weight:400;line-height:2;color:var(--gray);" data-ko="설치 후 별도의 전문 인력 없이 관리가 가능하며, 유지 보수의 부담이 적습니다." data-en="Manageable without specialist staff after installation, with minimal maintenance burden.">설치 후 별도의 전문 인력 없이 관리가 가능하며, 유지 보수의 부담이 적습니다.</p>
     </div>
   </div>
 </section>
@@ -432,20 +441,20 @@ section{padding:100px 80px;}
   <span class="section-label">Extended Program</span>
   <div class="sub-grid">
     <div class="sub-item">
-      <p class="sub-title">《사랑》 브랜드 에디션</p>
-      <p class="sub-body">지역, 기업 등의 브랜드 컬러와 아이덴터티를 반영하여 제작, 그 자체로 브랜드의 얼굴이 될 수 있다.</p>
+      <p class="sub-title" data-ko="《사랑》 브랜드 에디션" data-en="〈Sarang〉 Brand Edition">《사랑》 브랜드 에디션</p>
+      <p class="sub-body" data-ko="지역, 기업 등의 브랜드 컬러와 아이덴터티를 반영하여 제작, 그 자체로 브랜드의 얼굴이 될 수 있다." data-en="Produced to reflect the brand colors and identity of a region or company, it can become the very face of the brand.">지역, 기업 등의 브랜드 컬러와 아이덴터티를 반영하여 제작, 그 자체로 브랜드의 얼굴이 될 수 있다.</p>
     </div>
     <div class="sub-item">
-      <p class="sub-title">《사랑》 굿즈 연계</p>
-      <p class="sub-body">'사랑'이라는 주제가 환기하는 그대로 일상에 긍정적 감정과 미적 감각을 더해줄 굿즈를 기획, 제작한다.</p>
+      <p class="sub-title" data-ko="《사랑》 굿즈 연계" data-en="〈Sarang〉 Merchandise">《사랑》 굿즈 연계</p>
+      <p class="sub-body" data-ko="'사랑'이라는 주제가 환기하는 그대로 일상에 긍정적 감정과 미적 감각을 더해줄 굿즈를 기획, 제작한다." data-en="We plan and produce merchandise that brings positive emotion and aesthetic sensibility into everyday life — just as the theme of 'love' evokes.">'사랑'이라는 주제가 환기하는 그대로 일상에 긍정적 감정과 미적 감각을 더해줄 굿즈를 기획, 제작한다.</p>
     </div>
     <div class="sub-item">
-      <p class="sub-title">《사랑》 틱톡 챌린지</p>
-      <p class="sub-body">#SaranginSeongsu 등 지역 태그 챌린지</p>
+      <p class="sub-title" data-ko="《사랑》 틱톡 챌린지" data-en="〈Sarang〉 TikTok Challenge">《사랑》 틱톡 챌린지</p>
+      <p class="sub-body" data-ko="#SaranginSeongsu 등 지역 태그 챌린지" data-en="Location-based tag challenges such as #SaranginSeongsu">#SaranginSeongsu 등 지역 태그 챌린지</p>
     </div>
     <div class="sub-item">
-      <p class="sub-title">야간 조명 설치</p>
-      <p class="sub-body">창의적인 조명 설계로 야간에도 색다른 포토존으로서 기능할 수 있으며, 24시간 도시 랜드마크로서의 존재감을 확보한다.</p>
+      <p class="sub-title" data-ko="야간 조명 설치" data-en="Night Lighting Installation">야간 조명 설치</p>
+      <p class="sub-body" data-ko="창의적인 조명 설계로 야간에도 색다른 포토존으로서 기능할 수 있으며, 24시간 도시 랜드마크로서의 존재감을 확보한다." data-en="Creative lighting design allows 〈Sarang〉 to function as a unique photo spot at night, establishing its presence as a 24-hour urban landmark.">창의적인 조명 설계로 야간에도 색다른 포토존으로서 기능할 수 있으며, 24시간 도시 랜드마크로서의 존재감을 확보한다.</p>
     </div>
   </div>
 </section>
@@ -453,11 +462,30 @@ section{padding:100px 80px;}
 <!-- CTA -->
 <div class="cta-strip">
   <div>
-    <p class="cta-strip-text">《사랑》을 당신의 곁으로</p>
-    <p class="cta-strip-sub">Bring &lt;Sarang&gt; to You</p>
+    <p class="cta-strip-text" data-ko="《사랑》을 당신의 곁으로" data-en="Bring 〈Sarang〉 to You">《사랑》을 당신의 곁으로</p>
+    <p class="cta-strip-sub" style="display:none;"></p>
   </div>
-  <a href="/contact" class="btn btn-light">문의하기 →</a>
+  <a href="/contact" class="btn btn-light" data-ko="문의하기 →" data-en="Inquire →">문의하기 →</a>
 </div>
 
+
+<script>
+function setLang(lang) {
+  document.getElementById('root').lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+  });
+  document.querySelectorAll('[data-ko][data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (val !== null) el.innerHTML = val;
+  });
+  try { localStorage.setItem('sarang-lang', lang); } catch(e) {}
+}
+(function(){
+  let saved;
+  try { saved = localStorage.getItem('sarang-lang'); } catch(e) {}
+  if (saved && saved !== 'ko') setLang(saved);
+})();
+</script>
 </body>
 </html>
