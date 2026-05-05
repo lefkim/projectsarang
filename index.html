@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" id="root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>프로젝트 사랑</title>
+<title>프로젝트 사랑 / Project Sarang</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -33,6 +33,30 @@ nav{
 .nav-links{display:flex;gap:28px;list-style:none;}
 .nav-links a{font-weight:700;font-size:12px;color:var(--gray);text-decoration:none;letter-spacing:0.05em;}
 .nav-links a:hover{color:var(--red);}
+/* LANG TOGGLE */
+.lang-toggle{
+  display:flex;align-items:center;gap:0;
+  margin-left:24px;
+  border:1.5px solid #ddd;
+  border-radius:4px;
+  overflow:hidden;
+  flex-shrink:0;
+}
+.lang-btn{
+  font-weight:700;font-size:11px;
+  letter-spacing:0.1em;
+  padding:5px 10px;
+  background:transparent;
+  border:none;cursor:pointer;
+  color:var(--gray);
+  transition:all 0.15s;
+}
+.lang-btn.active{
+  background:var(--red);
+  color:var(--white);
+}
+.lang-btn:hover:not(.active){color:var(--red);}
+
 
 /* HERO — 좌우 분할 */
 .hero{
@@ -284,10 +308,6 @@ nav{
   .point-title{color:var(--black);font-size:16px;}
   .point-body{color:var(--gray);font-size:13px;}
 }
-  .lang-toggle{display:flex;align-items:center;gap:0;margin-left:24px;border:1.5px solid #ddd;border-radius:4px;overflow:hidden;flex-shrink:0;}
-.lang-btn{font-weight:700;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:transparent;border:none;cursor:pointer;color:var(--gray);transition:all 0.15s;}
-.lang-btn.active{background:var(--red);color:#fff;}
-.lang-btn:hover:not(.active){color:var(--red);}
 </style>
 </head>
 <body>
@@ -295,9 +315,9 @@ nav{
 <nav>
   <a href="/" class="nav-logo">PROJECT SARANG</a>
   <ul class="nav-links">
-    <li><a href="/project">프로젝트</a></li>
-    <li><a href="/artist">작가</a></li>
-    <li><a href="/contact">문의</a></li>
+    <li><a href="/project" data-ko="프로젝트" data-en="Project">프로젝트</a></li>
+    <li><a href="/artist" data-ko="작가" data-en="Artist">작가</a></li>
+    <li><a href="/contact" data-ko="문의" data-en="Contact">문의</a></li>
   </ul>
   <div class="lang-toggle">
     <button class="lang-btn active" onclick="setLang('ko')">KO</button>
@@ -316,12 +336,12 @@ nav{
 
   <!-- 우측: 텍스트 -->
   <div class="hero-text">
-    <h1 class="hero-title"><span style="background:var(--red);color:#fff;padding:4px 14px;display:inline-block;line-height:1.3;">사랑은 어디에나</span></h1>
-    <p class="hero-copy">지역과 기업의 새로운 랜드마크,<br>공공조각 《사랑》을 제안합니다.</p>
+    <h1 class="hero-title"><span style="background:var(--red);color:#fff;padding:4px 14px;display:inline-block;line-height:1.3;" data-ko="사랑은 어디에나" data-en="Sarang Is Everywhere">사랑은 어디에나</span></h1>
+    <p class="hero-copy" data-ko="지역과 기업의 새로운 랜드마크,<br>공공조각 〈사랑〉을 제안합니다." data-en="A new landmark for communities and brands,<br>we propose public sculpture 〈Sarang〉.">지역과 기업의 새로운 랜드마크,<br>공공조각 〈사랑〉을 제안합니다.</p>
     <div class="hero-btns">
-      <a href="/project" class="btn btn-red">프로젝트 소개</a>
-      <a href="/contact" class="btn btn-dark">문의하기</a>
-      <a href="/artist" class="btn btn-outline">작가 소개</a>
+      <a href="/project" class="btn btn-red" data-ko="프로젝트 소개" data-en="About Project">프로젝트 소개</a>
+      <a href="/contact" class="btn btn-dark" data-ko="문의하기" data-en="Inquire">문의하기</a>
+      <a href="/artist" class="btn btn-outline" data-ko="작가 소개" data-en="About Artist">작가 소개</a>
     </div>
   </div>
 
@@ -329,22 +349,49 @@ nav{
   <div class="points">
     <div class="point">
       <p class="point-num">01</p>
-      <p class="point-title">《사랑》은 새롭게 브랜드가 됩니다.</p>
-      <p class="point-body">지역이나 기업의 이미지를 담은 고유의 《사랑》이 탄생합니다. 설치 그 자체로 새로운 브랜딩이 됩니다.</p>
+      <p class="point-title" data-ko="《사랑》은 새롭게 브랜드가 됩니다." data-en="〈Sarang〉 becomes a new brand.">《사랑》은 새롭게 브랜드가 됩니다.</p>
+      <p class="point-body" data-ko="지역이나 기업의 이미지를 담은 고유의 《사랑》이 탄생합니다. 설치 그 자체로 새로운 브랜딩이 됩니다." data-en="A unique 〈Sarang〉 reflecting the identity of a region or brand is born. The installation itself becomes a new form of branding.">지역이나 기업의 이미지를 담은 고유의 《사랑》이 탄생합니다. 설치 그 자체로 새로운 브랜딩이 됩니다.</p>
     </div>
     <div class="point">
       <p class="point-num">02</p>
-      <p class="point-title">《사랑》이 있는 곳에 사람이 머뭅니다.</p>
-      <p class="point-body">《사랑》 앞에서 사람들은 발걸음을 멈춥니다. 사진을 찍고, SNS에 공유합니다. 《사랑》은 즐거움과 홍보의 장소가 됩니다.</p>
+      <p class="point-title" data-ko="《사랑》이 있는 곳에 사람이 머뭅니다." data-en="People linger where 〈Sarang〉 stands.">《사랑》이 있는 곳에 사람이 머뭅니다.</p>
+      <p class="point-body" data-ko="《사랑》 앞에서 사람들은 발걸음을 멈춥니다. 사진을 찍고, SNS에 공유합니다. 《사랑》은 즐거움과 홍보의 장소가 됩니다." data-en="People stop in front of 〈Sarang〉, take photos, and share on social media. It becomes a place of joy and organic promotion.">《사랑》 앞에서 사람들은 발걸음을 멈춥니다. 사진을 찍고, SNS에 공유합니다. 《사랑》은 즐거움과 홍보의 장소가 됩니다.</p>
     </div>
     <div class="point">
       <p class="point-num">03</p>
-      <p class="point-title">《사랑》은 모든 기획이 준비되어 있습니다.</p>
-      <p class="point-body">공공조각 《사랑》의 설치 위치 선정부터 제작, 관련 운영까지 구체적인 세부 제안서를 전달받으실 수 있습니다.</p>
+      <p class="point-title" data-ko="《사랑》은 모든 기획이 준비되어 있습니다." data-en="〈Sarang〉 comes with a complete plan.">《사랑》은 모든 기획이 준비되어 있습니다.</p>
+      <p class="point-body" data-ko="공공조각 《사랑》의 설치 위치 선정부터 제작, 관련 운영까지 구체적인 세부 제안서를 전달받으실 수 있습니다." data-en="From site selection to production and operation, you can receive a detailed proposal for the public sculpture 〈Sarang〉.">공공조각 《사랑》의 설치 위치 선정부터 제작, 관련 운영까지 구체적인 세부 제안서를 전달받으실 수 있습니다.</p>
     </div>
   </div>
 
 </section>
 
+
+<script>
+function setLang(lang) {
+  document.getElementById('root').lang = lang;
+
+  // 버튼 active 상태
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+  });
+
+  // 텍스트 전환 (innerHTML 지원)
+  document.querySelectorAll('[data-ko][data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (val !== null) el.innerHTML = val;
+  });
+
+  // 로컬스토리지 저장 (새로고침 유지)
+  try { localStorage.setItem('sarang-lang', lang); } catch(e) {}
+}
+
+// 초기 언어 적용
+(function(){
+  let saved;
+  try { saved = localStorage.getItem('sarang-lang'); } catch(e) {}
+  if (saved && saved !== 'ko') setLang(saved);
+})();
+</script>
 </body>
 </html>
