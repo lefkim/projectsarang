@@ -208,19 +208,60 @@ nav{
   .hero-btns{flex-direction:row;flex-wrap:wrap;}
   .hero-title{white-space:normal;}
 }
+/* 햄버거 */
+.hamburger{
+  display:none;
+  flex-direction:column;justify-content:center;align-items:center;
+  width:36px;height:36px;gap:5px;
+  background:none;border:none;cursor:pointer;padding:4px;
+  margin-left:12px;flex-shrink:0;
+}
+.hamburger span{
+  display:block;width:22px;height:2px;
+  background:var(--black);border-radius:2px;
+  transition:all 0.3s;
+}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* 모바일 오버레이 메뉴 */
+.nav-overlay{
+  display:none;
+  position:fixed;inset:0;z-index:99;
+  background:rgba(255,255,255,0.98);
+  flex-direction:column;align-items:center;justify-content:center;
+  gap:40px;
+}
+.nav-overlay.open{display:flex;}
+.nav-overlay a{
+  font-weight:900;font-size:28px;letter-spacing:-0.01em;
+  color:var(--black);text-decoration:none;
+  transition:color 0.15s;
+}
+.nav-overlay a:hover,.nav-overlay a.active{color:var(--red);}
+.nav-overlay .overlay-lang{
+  display:flex;gap:0;
+  border:1.5px solid #ddd;border-radius:4px;overflow:hidden;
+  margin-top:8px;
+}
+.nav-overlay .overlay-lang .lang-btn{
+  font-size:13px;padding:8px 18px;
+}
+
 @media(max-width:560px){
-  /* 네비 — 흰 배경, 빨간 로고 */
+  /* 네비 — 햄버거 모드 */
   nav{
     padding:14px 20px;
     background:rgba(255,255,255,0.97);
     border-bottom:1px solid #eee;
     position:fixed;
-    z-index:50;
+    z-index:100;
   }
   .nav-logo{color:var(--red);}
-  .nav-links a{color:var(--mid);}
-  .nav-links a:hover,.nav-links a.active{color:var(--red);}
-  .nav-links{gap:16px;}
+  .nav-links{display:none;}
+  .lang-toggle{display:none;}
+  .hamburger{display:flex;}
 
   /* 히어로 — 흰 배경 */
   .hero{
@@ -323,7 +364,21 @@ nav{
     <button class="lang-btn active" onclick="setLang('ko')">KO</button>
     <button class="lang-btn" onclick="setLang('en')">EN</button>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="메뉴" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- 모바일 오버레이 메뉴 -->
+<div class="nav-overlay" id="navOverlay">
+  <a href="/project" data-ko="프로젝트" data-en="Project" onclick="toggleMenu()">프로젝트</a>
+  <a href="/artist" data-ko="작가" data-en="Artist" onclick="toggleMenu()">작가</a>
+  <a href="/contact" data-ko="문의" data-en="Contact" onclick="toggleMenu()">문의</a>
+  <div class="overlay-lang">
+    <button class="lang-btn active" onclick="setLang('ko')">KO</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -368,6 +423,14 @@ nav{
 
 
 <script>
+function toggleMenu() {
+  const btn = document.getElementById('hamburger');
+  const overlay = document.getElementById('navOverlay');
+  btn.classList.toggle('open');
+  overlay.classList.toggle('open');
+  document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+}
+
 function setLang(lang) {
   document.getElementById('root').lang = lang;
 
