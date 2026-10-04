@@ -129,7 +129,7 @@ nav{
 /* figure.work + figcaption */
 figure.work{
   position:relative;
-  width:420px;
+  width:300px;
   flex-shrink:0;
   overflow:hidden;
   border:1px solid #222;
@@ -137,20 +137,27 @@ figure.work{
   display:flex;flex-direction:column;
 }
 figure.work img{
-  width:100%;height:320px;
-  object-fit:contain;
+  width:100%;height:440px;
+  object-fit:cover;
   display:block;
   transition:transform 0.5s ease;
-  padding:20px;
 }
 figure.work:hover img{transform:scale(1.03);}
 figure.work figcaption{
-  padding:12px 20px 16px;
-  font-size:12px;font-weight:400;
-  color:#aaa;letter-spacing:0.05em;
-  line-height:1.6;
+  flex:1;
+  padding:14px 18px 18px;
   background:#111;
   border-top:1px solid #222;
+}
+.work-name{
+  font-weight:900;font-size:14px;
+  color:#fff;letter-spacing:-0.01em;
+  margin-bottom:5px;line-height:1.35;
+}
+.work-meta{
+  font-weight:400;font-size:11px;
+  color:#8c8c8c;letter-spacing:0.02em;
+  line-height:1.65;
 }
 
 /* CAREER */
@@ -197,7 +204,7 @@ figure.work figcaption{
   .bio-text,.bio-stats{padding:48px 20px;}
   .works-wrap{padding:32px 0 32px 20px;}
   figure.work{width:82vw;}
-  figure.work img{height:60vw;}
+  figure.work img{height:108vw;}
   .career{padding:48px 20px;}
   .career-item{grid-template-columns:60px 1fr;gap:12px;}
   .links{padding:48px 20px;}
@@ -213,6 +220,7 @@ figure.work figcaption{
   <ul class="nav-links">
     <li><a href="/project" data-ko="프로젝트" data-en="Project">프로젝트</a></li>
     <li><a href="/artist" class="active" data-ko="작가" data-en="Artist">작가</a></li>
+    <li><a href="/exhibition" data-ko="전시" data-en="Exhibition">전시</a></li>
     <li><a href="/contact" data-ko="문의" data-en="Contact">문의</a></li>
   </ul>
   <div class="nav-right">
@@ -230,6 +238,7 @@ figure.work figcaption{
 <div class="nav-overlay" id="navOverlay">
   <a href="/project" data-ko="프로젝트" data-en="Project" onclick="toggleMenu()">프로젝트</a>
   <a href="/artist" class="active" data-ko="작가" data-en="Artist" onclick="toggleMenu()">작가</a>
+  <a href="/exhibition" data-ko="전시" data-en="Exhibition" onclick="toggleMenu()">전시</a>
   <a href="/contact" data-ko="문의" data-en="Contact" onclick="toggleMenu()">문의</a>
   <div class="overlay-lang">
     <button class="lang-btn active" onclick="setLang('ko')">KO</button>
@@ -243,9 +252,9 @@ figure.work figcaption{
     <p class="section-label">Artist</p>
     <p class="bio-name">김인태<br><span style="font-weight:400;font-size:0.6em;color:var(--gray);letter-spacing:0.1em;">KIM IN-TAE</span></p>
     <p class="bio-role"
-       data-ko="전 홍익대학교 미술대학 교수<br>Honorary Professor, Hong-Ik University"
-       data-en="Former Professor, College of Fine Arts, Hong-Ik University<br>Honorary Professor, Hong-Ik University">
-      전 홍익대학교 미술대학 교수<br>
+       data-ko="전 홍익대학교 미술대학 대학원 교수<br>Honorary Professor, Hong-Ik University"
+       data-en="Honorary Professor, Hong-Ik University">
+      전 홍익대학교 미술대학 대학원 교수<br>
       Honorary Professor, Hong-Ik University
     </p>
     <p style="font-size:13px;font-weight:400;color:var(--gray);line-height:2;margin-top:24px;padding-top:24px;border-top:1px solid #eee;"
@@ -280,28 +289,43 @@ figure.work figcaption{
   <div class="works">
 
     <figure class="work">
-      <img src="../images/image1.jpeg" alt="작품 1">
-      <figcaption>캡션을 여기에 입력하세요</figcaption>
+      <img src="../images/works/metagrowth.jpg" alt="생장의 행간" loading="lazy">
+      <figcaption>
+        <p class="work-name" data-ko="생장의 행간" data-en="Between Meta-Growth">생장의 행간</p>
+        <p class="work-meta" data-ko="Painted on Stainless Steel · 1,000(h) × 320(w) × 315(d) cm · 2019" data-en="Painted on Stainless Steel · 1,000(h) × 320(w) × 315(d) cm · 2019">Painted on Stainless Steel · 1,000(h) × 320(w) × 315(d) cm · 2019</p>
+      </figcaption>
     </figure>
 
     <figure class="work">
-      <img src="../images/image2.jpeg" alt="작품 2">
-      <figcaption>캡션을 여기에 입력하세요</figcaption>
+      <img src="../images/works/stupa.jpg" alt="Samgiti Stupa 기둥" loading="lazy">
+      <figcaption>
+        <p class="work-name" data-ko="Samgiti Stupa 기둥" data-en="Samgiti Stupa">Samgiti Stupa 기둥</p>
+        <p class="work-meta" data-ko="Painted on Stainless Steel · 650(h) × 150(w) × 145(d) cm · 2020" data-en="Painted on Stainless Steel · 650(h) × 150(w) × 145(d) cm · 2020">Painted on Stainless Steel · 650(h) × 150(w) × 145(d) cm · 2020</p>
+      </figcaption>
     </figure>
 
     <figure class="work">
-      <img src="../images/image3.jpg" alt="작품 3">
-      <figcaption>캡션을 여기에 입력하세요</figcaption>
+      <img src="../images/works/installation2.jpg" alt="《사랑》" loading="lazy">
+      <figcaption>
+        <p class="work-name" data-ko="《사랑》" data-en="〈Sarang〉">《사랑》</p>
+        <p class="work-meta" data-ko="야외 설치 · 2021" data-en="Outdoor Installation · 2021">야외 설치 · 2021</p>
+      </figcaption>
     </figure>
 
     <figure class="work">
-      <img src="../images/image4.jpg" alt="작품 4">
-      <figcaption>캡션을 여기에 입력하세요</figcaption>
+      <img src="../images/works/chair1.jpg" alt="의자 《사랑》" loading="lazy">
+      <figcaption>
+        <p class="work-name" data-ko="의자 《사랑》" data-en="Chair 〈Sarang〉">의자 《사랑》</p>
+        <p class="work-meta" data-ko="앉을 수 있는 조각 · 2026" data-en="A Sculpture to Sit On · 2026">앉을 수 있는 조각 · 2026</p>
+      </figcaption>
     </figure>
 
     <figure class="work">
-      <img src="../images/image5.jpg" alt="작품 5">
-      <figcaption>캡션을 여기에 입력하세요</figcaption>
+      <img src="../images/works/chair2.jpg" alt="의자 《사랑》" loading="lazy">
+      <figcaption>
+        <p class="work-name" data-ko="의자 《사랑》" data-en="Chair 〈Sarang〉">의자 《사랑》</p>
+        <p class="work-meta" data-ko="2026" data-en="2026">2026</p>
+      </figcaption>
     </figure>
 
   </div>
