@@ -423,6 +423,78 @@ nav{ top:var(--banner-h); }
     aspect-ratio:auto;max-height:none;
   }
 }
+
+/* ===== 전시 포스터 모달 ===== */
+.ex-modal{
+  position:fixed;inset:0;z-index:200;
+  display:none;
+  align-items:center;justify-content:center;
+  padding:24px;
+  background:rgba(17,17,17,0.82);
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+  opacity:0;transition:opacity 0.28s ease;
+}
+.ex-modal.show{display:flex;opacity:1;}
+.ex-modal-box{
+  position:relative;
+  width:100%;max-width:420px;
+  max-height:calc(100dvh - 48px);
+  background:var(--white);
+  display:flex;flex-direction:column;
+  box-shadow:0 30px 80px rgba(0,0,0,0.45);
+  transform:translateY(14px);
+  transition:transform 0.28s cubic-bezier(.2,.8,.3,1);
+  overflow:hidden;
+}
+.ex-modal.show .ex-modal-box{transform:translateY(0);}
+.ex-modal-poster{display:block;width:100%;height:auto;min-height:0;object-fit:contain;}
+.ex-modal-body{padding:20px 22px 22px;border-top:1px solid #eee;}
+.ex-modal-tag{
+  font-weight:900;font-size:10px;letter-spacing:0.2em;
+  color:var(--red);text-transform:uppercase;margin-bottom:9px;
+}
+.ex-modal-title{
+  font-weight:900;font-size:19px;line-height:1.35;
+  letter-spacing:-0.02em;color:var(--black);margin-bottom:10px;
+}
+.ex-modal-info{font-size:12.5px;font-weight:400;line-height:1.85;color:var(--gray);margin-bottom:18px;}
+.ex-modal-btns{display:flex;gap:8px;}
+.ex-modal-btns a,.ex-modal-btns button{
+  flex:1;text-align:center;cursor:pointer;
+  font-family:inherit;font-weight:700;font-size:12.5px;
+  letter-spacing:0.03em;text-decoration:none;
+  padding:13px 10px;border:2px solid var(--black);
+  transition:all 0.18s;
+}
+.ex-modal-btns a{background:var(--black);color:var(--white);}
+.ex-modal-btns a:hover{background:var(--red);border-color:var(--red);}
+.ex-modal-btns button{background:transparent;color:var(--black);}
+.ex-modal-btns button:hover{background:var(--black);color:var(--white);}
+.ex-modal-close{
+  position:absolute;top:10px;right:10px;z-index:2;
+  width:34px;height:34px;border:none;cursor:pointer;
+  background:rgba(255,255,255,0.92);
+  color:var(--black);font-size:19px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.18s;
+}
+.ex-modal-close:hover{background:var(--red);color:var(--white);}
+.ex-modal-hide{
+  display:flex;align-items:center;gap:7px;
+  margin-top:13px;cursor:pointer;
+  font-size:11.5px;color:#999;user-select:none;
+}
+.ex-modal-hide input{accent-color:var(--red);width:14px;height:14px;cursor:pointer;}
+@media(max-width:560px){
+  .ex-modal{padding:16px;}
+  .ex-modal-box{max-width:none;max-height:calc(100dvh - 32px);}
+  .ex-modal-poster{max-height:46dvh;}
+  .ex-modal-body{padding:16px 18px 18px;}
+  .ex-modal-title{font-size:17px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .ex-modal,.ex-modal-box{transition:none;}
+}
 </style>
 </head>
 <body>
@@ -462,6 +534,28 @@ nav{ top:var(--banner-h); }
   <div class="overlay-lang">
     <button class="lang-btn active" onclick="setLang('ko')">KO</button>
     <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</div>
+
+
+<!-- 전시 포스터 모달 -->
+<div class="ex-modal" id="exModal" role="dialog" aria-modal="true" aria-labelledby="exModalTitle">
+  <div class="ex-modal-box">
+    <button class="ex-modal-close" id="exModalClose" aria-label="닫기">&times;</button>
+    <img class="ex-modal-poster" src="images/exhibition/poster.jpg" alt="한글날, 인사동에 《사랑》이 왔어요 — 전시 포스터">
+    <div class="ex-modal-body">
+      <p class="ex-modal-tag" data-ko="한글날 팝업 전시" data-en="Hangul Day Pop-up">한글날 팝업 전시</p>
+      <p class="ex-modal-title" id="exModalTitle" data-ko="한글날, 인사동에<br>《사랑》이 왔어요" data-en="On Hangul Day,<br>〈Sarang〉 comes to Insa-dong">한글날, 인사동에<br>《사랑》이 왔어요</p>
+      <p class="ex-modal-info" data-ko="2026년 10월 9일 (금) 13:00 – 18:00<br>인사동 INSA1010 · 입장 무료" data-en="Fri, October 9, 2026 · 1–6 PM<br>INSA1010, Insa-dong · Free admission">2026년 10월 9일 (금) 13:00 – 18:00<br>인사동 INSA1010 · 입장 무료</p>
+      <div class="ex-modal-btns">
+        <a href="/exhibition" data-ko="전시 보기 →" data-en="View Exhibition →">전시 보기 →</a>
+        <button type="button" id="exModalDismiss" data-ko="닫기" data-en="Close">닫기</button>
+      </div>
+      <label class="ex-modal-hide">
+        <input type="checkbox" id="exModalToday">
+        <span data-ko="오늘 하루 보지 않기" data-en="Don't show again today">오늘 하루 보지 않기</span>
+      </label>
+    </div>
   </div>
 </div>
 
@@ -548,6 +642,49 @@ function setLang(lang) {
   let saved;
   try { saved = localStorage.getItem('sarang-lang'); } catch(e) {}
   if (saved && saved !== 'ko') setLang(saved);
+})();
+
+/* ===== 전시 포스터 모달 ===== */
+(function(){
+  var END = new Date(2026, 9, 10, 0, 0, 0);   // 2026-10-10 00:00 이후 자동 비활성
+  var KEY = 'sarang-ex-modal-hide';
+  var modal = document.getElementById('exModal');
+  if (!modal) return;
+  if (new Date() >= END) return;
+
+  var hideUntil = 0;
+  try { hideUntil = parseInt(localStorage.getItem(KEY) || '0', 10); } catch(e) {}
+  if (hideUntil && Date.now() < hideUntil) return;
+
+  var box = modal.querySelector('.ex-modal-box');
+  var todayBox = document.getElementById('exModalToday');
+  var lastFocus = null;
+
+  function open(){
+    lastFocus = document.activeElement;
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    var c = document.getElementById('exModalClose');
+    if (c) c.focus();
+  }
+  function close(){
+    if (todayBox && todayBox.checked) {
+      try { localStorage.setItem(KEY, String(Date.now() + 864e5)); } catch(e) {}
+    }
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.getElementById('exModalClose').addEventListener('click', close);
+  document.getElementById('exModalDismiss').addEventListener('click', close);
+  modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && modal.classList.contains('show')) close();
+  });
+  box.addEventListener('click', function(e){ e.stopPropagation(); });
+
+  setTimeout(open, 500);
 })();
 </script>
 </body>
