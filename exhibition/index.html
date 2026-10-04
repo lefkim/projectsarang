@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ko" id="root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>한글날, 인사동에 《사랑》이 왔어요 — Project Sarang</title>
+<meta name="description" content="2026년 10월 9일 한글날, 인사동 INSA1010에서 열리는 김인태 작가 《사랑》 팝업 전시.">
+<meta property="og:title" content="한글날, 인사동에 《사랑》이 왔어요">
+<meta property="og:description" content="2026.10.09 한글날 · 인사동 INSA1010 · 13:00–18:00 · 입장 무료">
+<meta property="og:image" content="../images/exhibition/poster.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#C8102E;
+  --black:#111;
+  --white:#fff;
+  --gray:#777;
+  --mid:#444;
+  --off:#F4F2EF;
+}
+body{
+  font-family:'Noto Sans KR',sans-serif;
+  background:var(--white);
+  color:var(--black);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ───────── NAV (전 페이지 공통) ───────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;
+  padding:20px 48px;
+  background:rgba(255,255,255,0.97);
+  border-bottom:1px solid #eee;
+}
+.nav-logo{font-weight:900;font-size:15px;color:var(--red);text-decoration:none;flex-shrink:0;}
+.nav-links{display:flex;gap:28px;list-style:none;flex:1;justify-content:center;}
+.nav-links a{font-weight:700;font-size:12px;color:var(--gray);text-decoration:none;letter-spacing:0.05em;}
+.nav-links a:hover,.nav-links a.active{color:var(--red);}
+.nav-right{display:flex;align-items:center;gap:0;flex-shrink:0;}
+
+.lang-toggle{
+  display:flex;align-items:center;gap:0;margin-left:0;
+  border:1.5px solid #ddd;border-radius:4px;overflow:hidden;flex-shrink:0;
+}
+.lang-btn{
+  font-weight:700;font-size:11px;letter-spacing:0.1em;
+  padding:5px 10px;background:transparent;border:none;cursor:pointer;
+  color:var(--gray);transition:all 0.15s;
+}
+.lang-btn.active{background:var(--red);color:var(--white);}
+.lang-btn:hover:not(.active){color:var(--red);}
+
+.hamburger{
+  display:none;flex-direction:column;justify-content:center;align-items:center;
+  width:36px;height:36px;gap:5px;
+  background:none;border:none;cursor:pointer;padding:4px;
+  margin-left:12px;flex-shrink:0;
+}
+.hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.nav-overlay{
+  display:none;position:fixed;inset:0;z-index:99;
+  background:var(--white);
+  flex-direction:column;align-items:center;justify-content:center;gap:36px;
+}
+.nav-overlay.open{display:flex;}
+.nav-overlay a{
+  font-weight:900;font-size:28px;letter-spacing:-0.01em;
+  color:var(--black);text-decoration:none;transition:color 0.15s;
+}
+.nav-overlay a:hover,.nav-overlay a.active{color:var(--red);}
+.nav-overlay .overlay-lang{
+  display:flex;gap:0;border:1.5px solid #ddd;border-radius:4px;overflow:hidden;margin-top:8px;
+}
+.nav-overlay .overlay-lang .lang-btn{font-size:13px;padding:8px 18px;}
+
+/* ───────── HERO ───────── */
+.ex-hero{
+  display:grid;
+  grid-template-columns:minmax(0,0.85fr) minmax(0,1fr);
+  min-height:100dvh;
+  padding-top:64px;
+  background:var(--black);
+}
+.poster-wrap{
+  background:var(--black);
+  display:flex;align-items:center;justify-content:center;
+  padding:56px 48px;
+  overflow:hidden;
+}
+.poster-wrap img{
+  width:100%;
+  max-height:calc(100dvh - 180px);
+  object-fit:contain;
+  display:block;
+  box-shadow:0 24px 60px rgba(0,0,0,0.5);
+}
+.ex-info{
+  background:var(--white);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:72px 64px;
+}
+.ex-badge{
+  display:inline-block;align-self:flex-start;
+  background:var(--red);color:var(--white);
+  font-weight:900;font-size:11px;letter-spacing:0.2em;
+  padding:7px 14px;margin-bottom:28px;
+}
+.ex-title{
+  font-weight:900;
+  font-size:clamp(26px,3.4vw,46px);
+  line-height:1.25;letter-spacing:-0.02em;
+  color:var(--black);margin-bottom:14px;
+}
+.ex-title em{font-style:normal;color:var(--red);letter-spacing:-0.045em;}
+/* 겹낫표 《》 좌우 여백 보정 */
+.bk{letter-spacing:-0.045em;margin-left:-0.08em;}
+.ex-subtitle{
+  font-weight:400;font-size:clamp(13px,1.2vw,16px);
+  color:var(--gray);letter-spacing:0.04em;line-height:1.7;
+  margin-bottom:40px;
+}
+.ex-divider{width:72px;height:3px;background:var(--red);margin-bottom:36px;}
+
+.ex-meta{display:flex;flex-direction:column;gap:0;margin-bottom:40px;}
+.ex-meta-row{
+  display:grid;grid-template-columns:92px 1fr;
+  gap:16px;align-items:baseline;
+  padding:14px 0;border-bottom:1px solid #eee;
+}
+.ex-meta-row:first-child{border-top:1px solid #eee;}
+.ex-meta-k{
+  font-weight:900;font-size:10px;letter-spacing:0.18em;
+  color:var(--red);text-transform:uppercase;
+}
+.ex-meta-v{font-size:14px;font-weight:700;color:var(--black);line-height:1.7;}
+.ex-meta-v small{display:block;font-weight:400;font-size:12px;color:var(--gray);margin-top:3px;letter-spacing:0.02em;}
+
+.ex-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.btn{
+  display:inline-block;font-weight:700;font-size:13px;letter-spacing:0.05em;
+  text-decoration:none;padding:15px 30px;border:2px solid transparent;transition:all 0.2s;
+}
+.btn-red{background:var(--red);color:var(--white);border-color:var(--red);}
+.btn-red:hover{background:transparent;color:var(--red);}
+.btn-dark{background:var(--black);color:var(--white);border-color:var(--black);}
+.btn-dark:hover{background:var(--red);border-color:var(--red);}
+.btn-outline{background:transparent;color:var(--black);border-color:#ccc;}
+.btn-outline:hover{border-color:var(--black);}
+.btn-light{background:var(--white);color:var(--black);border-color:var(--white);}
+.btn-light:hover{background:transparent;color:var(--white);border-color:var(--white);}
+
+/* ───────── INTRO ───────── */
+.intro{padding:100px 80px;background:var(--white);max-width:1100px;margin:0 auto;}
+.section-label{
+  display:block;font-weight:900;font-size:11px;letter-spacing:0.25em;
+  color:var(--red);text-transform:uppercase;margin-bottom:24px;
+}
+.intro-headline{
+  font-weight:900;font-size:clamp(22px,2.6vw,36px);
+  line-height:1.4;letter-spacing:-0.02em;color:var(--black);margin-bottom:32px;
+}
+.intro-body{font-size:15px;font-weight:400;line-height:2.1;color:var(--mid);max-width:760px;}
+
+/* ───────── WORKS ───────── */
+.works{background:var(--off);padding:90px 80px;}
+.works-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;margin-bottom:44px;
+}
+.works-title{font-weight:900;font-size:clamp(20px,2.4vw,32px);letter-spacing:-0.02em;color:var(--black);}
+.works-note{font-size:13px;font-weight:400;color:var(--gray);line-height:1.9;text-align:right;}
+.works-note strong{font-weight:900;color:var(--red);font-size:15px;}
+.works-note del{color:#bbb;}
+
+.works-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:28px;
+}
+figure.work{
+  background:var(--white);
+  border:1px solid #e6e3df;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+}
+figure.work img{
+  width:100%;aspect-ratio:4/3;
+  object-fit:cover;display:block;
+  transition:transform 0.5s ease;
+}
+figure.work:hover img{transform:scale(1.04);}
+figure.work figcaption{
+  padding:16px 18px 18px;
+  border-top:1px solid #f0edea;
+}
+.work-name{font-weight:900;font-size:14px;color:var(--black);letter-spacing:-0.01em;margin-bottom:5px;}
+.work-desc{font-weight:400;font-size:12px;color:var(--gray);line-height:1.75;}
+
+/* ───────── VISIT ───────── */
+.visit{padding:90px 80px;background:var(--white);}
+.visit-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:40px;
+  max-width:1100px;margin:36px auto 0;
+}
+.visit-item{border-top:2px solid var(--black);padding-top:16px;}
+.visit-k{font-weight:900;font-size:10px;letter-spacing:0.18em;color:var(--red);text-transform:uppercase;margin-bottom:10px;}
+.visit-v{font-weight:900;font-size:17px;color:var(--black);margin-bottom:6px;line-height:1.4;}
+.visit-d{font-size:12px;font-weight:400;line-height:1.9;color:var(--gray);}
+
+/* ───────── CTA ───────── */
+.cta{
+  background:var(--black);color:var(--white);
+  padding:70px 80px;
+  display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;
+}
+.cta-text{font-weight:900;font-size:clamp(19px,2.2vw,28px);letter-spacing:-0.02em;line-height:1.4;}
+.cta-sub{font-weight:400;font-size:13px;color:#999;margin-top:10px;line-height:1.8;}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;}
+
+/* ───────── RESPONSIVE ───────── */
+@media(max-width:1024px){
+  .ex-hero{grid-template-columns:1fr;min-height:0;}
+  .poster-wrap{padding:48px 32px;}
+  .poster-wrap img{max-height:68vh;}
+  .ex-info{padding:56px 32px;}
+  .intro,.works,.visit,.cta{padding-left:40px;padding-right:40px;}
+  .visit-grid{grid-template-columns:1fr 1fr;gap:32px;}
+}
+@media(max-width:768px){
+  nav{padding:16px 24px;}
+  .nav-links{gap:20px;}
+  .works-head{flex-direction:column;align-items:flex-start;}
+  .works-note{text-align:left;}
+}
+@media(max-width:560px){
+  nav{
+    padding:14px 20px;display:grid;grid-template-columns:1fr auto;
+    background:rgba(255,255,255,0.97);border-bottom:1px solid #eee;
+    position:fixed;z-index:100;
+  }
+  .nav-logo{color:var(--red);}
+  .nav-links{display:none;}
+  .nav-right{margin-left:0;}
+  .hamburger{display:flex;}
+
+  .ex-hero{padding-top:56px;}
+  .poster-wrap{padding:32px 20px;}
+  .poster-wrap img{max-height:62vh;}
+  .ex-info{padding:44px 20px;}
+  .ex-meta-row{grid-template-columns:76px 1fr;gap:12px;padding:12px 0;}
+  .ex-btns .btn{flex:1;text-align:center;padding:13px 16px;font-size:12px;}
+
+  .intro{padding:56px 20px;}
+  .works{padding:56px 20px;}
+  .works-grid{grid-template-columns:1fr;gap:20px;}
+  .visit{padding:56px 20px;}
+  .visit-grid{grid-template-columns:1fr;gap:28px;}
+  .cta{padding:48px 20px;flex-direction:column;align-items:flex-start;}
+  .cta-btns{width:100%;flex-direction:column;}
+  .cta-btns .btn{text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">PROJECT SARANG</a>
+  <ul class="nav-links">
+    <li><a href="/project" data-ko="프로젝트" data-en="Project">프로젝트</a></li>
+    <li><a href="/artist" data-ko="작가" data-en="Artist">작가</a></li>
+    <li><a href="/exhibition" class="active" data-ko="전시" data-en="Exhibition">전시</a></li>
+    <li><a href="/contact" data-ko="문의" data-en="Contact">문의</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('ko')">KO</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="메뉴" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- 모바일 오버레이 메뉴 -->
+<div class="nav-overlay" id="navOverlay">
+  <a href="/project" data-ko="프로젝트" data-en="Project" onclick="toggleMenu()">프로젝트</a>
+  <a href="/artist" data-ko="작가" data-en="Artist" onclick="toggleMenu()">작가</a>
+  <a href="/exhibition" class="active" data-ko="전시" data-en="Exhibition" onclick="toggleMenu()">전시</a>
+  <a href="/contact" data-ko="문의" data-en="Contact" onclick="toggleMenu()">문의</a>
+  <div class="overlay-lang">
+    <button class="lang-btn active" onclick="setLang('ko')">KO</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</div>
+
+<!-- ───────── HERO ───────── -->
+<section class="ex-hero">
+
+  <div class="poster-wrap">
+    <img src="../images/exhibition/poster.jpg" alt="한글날, 인사동에 《사랑》이 왔어요 — 전시 포스터">
+  </div>
+
+  <div class="ex-info">
+    <span class="ex-badge" data-ko="2026 한글날 팝업 전시" data-en="Hangul Day Pop-up 2026">2026 한글날 팝업 전시</span>
+
+    <h1 class="ex-title" data-ko="한글날,<br>인사동에<em>《사랑》</em>이<br>왔어요" data-en="On Hangul Day,<br><em>〈Sarang〉</em> comes<br>to Insa-dong">한글날,<br>인사동에<em>《사랑》</em>이<br>왔어요</h1>
+
+    <p class="ex-subtitle" data-ko="SARANG ART : INTAE KIM" data-en="SARANG ART : INTAE KIM">SARANG ART : INTAE KIM</p>
+
+    <div class="ex-divider"></div>
+
+    <div class="ex-meta">
+      <div class="ex-meta-row">
+        <span class="ex-meta-k">Date</span>
+        <span class="ex-meta-v" data-ko="2026년 10월 9일 (금)<small>한글날 · 하루 동안 진행됩니다</small>" data-en="Friday, October 9, 2026<small>Hangul Day · One day only</small>">2026년 10월 9일 (금)<small>한글날 · 하루 동안 진행됩니다</small></span>
+      </div>
+      <div class="ex-meta-row">
+        <span class="ex-meta-k">Time</span>
+        <span class="ex-meta-v" data-ko="오후 1시 — 오후 6시<small>오프닝 오후 1시</small>" data-en="1:00 PM — 6:00 PM<small>Opening at 1:00 PM</small>">오후 1시 — 오후 6시<small>오프닝 오후 1시</small></span>
+      </div>
+      <div class="ex-meta-row">
+        <span class="ex-meta-k">Place</span>
+        <span class="ex-meta-v" data-ko="인사동 INSA1010<small>서울 종로구 인사동10길 10, B1–4F</small>" data-en="INSA1010, Insa-dong<small>10 Insadong 10-gil, Jongno-gu, Seoul, B1–4F</small>">인사동 INSA1010<small>서울 종로구 인사동10길 10, B1–4F</small></span>
+      </div>
+      <div class="ex-meta-row">
+        <span class="ex-meta-k">Entry</span>
+        <span class="ex-meta-v" data-ko="무료<small>주최 IAF · 협력기획 테오화랑</small>" data-en="Free admission<small>Hosted by IAF · Co-curated by Theo Gallery</small>">무료<small>주최 IAF · 협력기획 테오화랑</small></span>
+      </div>
+    </div>
+
+    <div class="ex-btns">
+      <a href="https://map.naver.com/p/search/인사동10길 10" target="_blank" rel="noopener" class="btn btn-red" data-ko="길찾기 →" data-en="Get Directions →">길찾기 →</a>
+      <a href="/contact" class="btn btn-outline" data-ko="문의하기" data-en="Inquire">문의하기</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ───────── INTRO ───────── -->
+<section class="intro">
+  <span class="section-label">About the Exhibition</span>
+  <h2 class="intro-headline" data-ko="한글의 심장 인사동에서,<br>한글로 만든<span class='bk'>《사랑》</span>을 만납니다." data-en="In Insa-dong, the heart of Hangul,<br>meet 〈Sarang〉 — sculpted from Hangul itself.">한글의 심장 인사동에서,<br>한글로 만든<span class="bk">《사랑》</span>을 만납니다.</h2>
+  <p class="intro-body" data-ko="《사랑》은 한글 자음 'ㅅ'의 조형에서 출발한 김인태 작가의 조각입니다. 작가는 'ㅅ'을 '사람 인(人)'으로 사유하며, 천·지·인과 연결되는 원방각(○□△)의 결합 구조를 입체로 구현해 왔습니다.<br><br>이번 팝업 전시에서는 그동안 도시의 랜드마크로 세워져 온 대형 《사랑》을, 손에 들 수 있는 크기의 컬러 에디션으로 선보입니다. 레드, 그린, 핑크, 골드 — 각기 다른 색을 입은 조각들이 전용 패키지와 함께 전시되며, 현장에서 바로 소장하실 수 있습니다.<br><br>한글날, 인사동, 그리고 한글로 만든 조각. 하루뿐인 전시에 편히 들러 주세요." data-en="〈Sarang〉 begins with the form of the Korean consonant 'ㅅ'. The artist reads 'ㅅ' also as the character for 'person' (人), realizing a structure that joins the circle, square and triangle — Heaven, Earth and Humanity.<br><br>This pop-up presents 〈Sarang〉, long installed as an urban landmark, in a hand-held colour edition. Red, green, pink and gold pieces are shown with their dedicated packaging, and are available to take home on the day.<br><br>Hangul Day, Insa-dong, and a sculpture made of Hangul. Please drop by — it runs for one day only.">《사랑》은 한글 자음 'ㅅ'의 조형에서 출발한 김인태 작가의 조각입니다. 작가는 'ㅅ'을 '사람 인(人)'으로 사유하며, 천·지·인과 연결되는 원방각(○□△)의 결합 구조를 입체로 구현해 왔습니다.<br><br>이번 팝업 전시에서는 그동안 도시의 랜드마크로 세워져 온 대형 《사랑》을, 손에 들 수 있는 크기의 컬러 에디션으로 선보입니다. 레드, 그린, 핑크, 골드 — 각기 다른 색을 입은 조각들이 전용 패키지와 함께 전시되며, 현장에서 바로 소장하실 수 있습니다.<br><br>한글날, 인사동, 그리고 한글로 만든 조각. 하루뿐인 전시에 편히 들러 주세요.</p>
+</section>
+
+<!-- ───────── WORKS ───────── -->
+<section class="works">
+  <div class="works-head">
+    <div>
+      <span class="section-label">On View</span>
+      <h2 class="works-title" data-ko="<span class='bk'>《사랑》</span> 컬러 에디션" data-en="〈Sarang〉 Colour Edition"><span class="bk">《사랑》</span> 컬러 에디션</h2>
+    </div>
+    <p class="works-note" data-ko="전시 특가 <strong>180,000원</strong> &nbsp;<del>정가 200,000원</del><br>전용 패키지 포함 · 현장 판매" data-en="Exhibition price <strong>KRW 180,000</strong> &nbsp;<del>RRP 200,000</del><br>Includes packaging · Available on site">전시 특가 <strong>180,000원</strong> &nbsp;<del>정가 200,000원</del><br>전용 패키지 포함 · 현장 판매</p>
+  </div>
+
+  <div class="works-grid">
+
+    <figure class="work">
+      <img src="../images/exhibition/sarang1.jpg" alt="《사랑》 컬러 에디션 전체">
+      <figcaption>
+        <p class="work-name" data-ko="컬러 에디션" data-en="Colour Edition">컬러 에디션</p>
+        <p class="work-desc" data-ko="레드 · 그린 · 핑크 · 골드 네 가지 컬러로 제작된 《사랑》 에디션." data-en="〈Sarang〉 edition in four colours — red, green, pink and gold.">레드 · 그린 · 핑크 · 골드 네 가지 컬러로 제작된 《사랑》 에디션.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="work">
+      <img src="../images/exhibition/sarang2.jpg" alt="《사랑》 레드 에디션">
+      <figcaption>
+        <p class="work-name" data-ko="레드 에디션" data-en="Red Edition">레드 에디션</p>
+        <p class="work-desc" data-ko="프로젝트 사랑을 대표하는 색. 전용 패턴 패키지와 함께." data-en="The signature colour of Project Sarang, with its patterned box.">프로젝트 사랑을 대표하는 색. 전용 패턴 패키지와 함께.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="work">
+      <img src="../images/exhibition/sarang3.jpg" alt="《사랑》 그린 에디션">
+      <figcaption>
+        <p class="work-name" data-ko="그린 에디션" data-en="Green Edition">그린 에디션</p>
+        <p class="work-desc" data-ko="깊고 선명한 그린. 빛의 각도에 따라 면이 다르게 읽힙니다." data-en="A deep, vivid green whose planes shift with the angle of light.">깊고 선명한 그린. 빛의 각도에 따라 면이 다르게 읽힙니다.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="work">
+      <img src="../images/exhibition/sarang4.jpg" alt="《사랑》 핑크 에디션">
+      <figcaption>
+        <p class="work-name" data-ko="핑크 에디션" data-en="Pink Edition">핑크 에디션</p>
+        <p class="work-desc" data-ko="가장 따뜻한 톤. 선물용으로 가장 많이 찾는 컬러입니다." data-en="The warmest tone — the colour most often chosen as a gift.">가장 따뜻한 톤. 선물용으로 가장 많이 찾는 컬러입니다.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="work">
+      <img src="../images/exhibition/sarang5.jpg" alt="《사랑》 골드 에디션">
+      <figcaption>
+        <p class="work-name" data-ko="골드 에디션" data-en="Gold Edition">골드 에디션</p>
+        <p class="work-desc" data-ko="메탈릭 골드 마감. 조명 아래에서 글자의 획이 또렷하게 드러납니다." data-en="A metallic gold finish that sharpens every stroke under light.">메탈릭 골드 마감. 조명 아래에서 글자의 획이 또렷하게 드러납니다.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="work">
+      <img src="../images/exhibition/sarang6.jpg" alt="《사랑》 전용 패키지">
+      <figcaption>
+        <p class="work-name" data-ko="전용 패키지" data-en="Dedicated Packaging">전용 패키지</p>
+        <p class="work-desc" data-ko="'사랑' 자모를 반복한 패턴 박스. 쿠션 폼으로 작품을 고정합니다." data-en="A box patterned with repeated 'Sarang' letterforms, with cushioned foam inside.">'사랑' 자모를 반복한 패턴 박스. 쿠션 폼으로 작품을 고정합니다.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="work">
+      <img src="../images/exhibition/sarang7.jpg" alt="《사랑》 핑크 · 그린 에디션">
+      <figcaption>
+        <p class="work-name" data-ko="함께 놓기" data-en="Side by Side">함께 놓기</p>
+        <p class="work-desc" data-ko="두 점을 나란히 두면 또 하나의 조형이 됩니다. 혼자여도 좋고, 둘이라면 더 좋습니다." data-en="Placed side by side, two pieces form a new shape. Alone is fine; together is better.">두 점을 나란히 두면 또 하나의 조형이 됩니다. 혼자여도 좋고, 둘이라면 더 좋습니다.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="work">
+      <img src="../images/exhibition/sarang8.jpg" alt="《사랑》 레드 · 그린 디테일">
+      <figcaption>
+        <p class="work-name" data-ko="디테일" data-en="Detail">디테일</p>
+        <p class="work-desc" data-ko="'ㅅ'에서 시작해 'ㅇ'으로 닫히는 구조. 대형 조각과 동일한 조형을 손 안의 크기로 옮겼습니다." data-en="A structure that opens at 'ㅅ' and closes at 'ㅇ' — the large sculpture's form, brought to hand size.">'ㅅ'에서 시작해 'ㅇ'으로 닫히는 구조. 대형 조각과 동일한 조형을 손 안의 크기로 옮겼습니다.</p>
+      </figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- ───────── VISIT ───────── -->
+<section class="visit">
+  <span class="section-label">Visit</span>
+  <h2 class="works-title" data-ko="관람 안내" data-en="Visitor Information">관람 안내</h2>
+  <div class="visit-grid">
+    <div class="visit-item">
+      <p class="visit-k">Date</p>
+      <p class="visit-v" data-ko="10월 9일 (금)" data-en="Fri, Oct 9">10월 9일 (금)</p>
+      <p class="visit-d" data-ko="2026년 한글날<br>하루만 진행되는 팝업 전시입니다." data-en="Hangul Day 2026<br>A one-day pop-up exhibition.">2026년 한글날<br>하루만 진행되는 팝업 전시입니다.</p>
+    </div>
+    <div class="visit-item">
+      <p class="visit-k">Hours</p>
+      <p class="visit-v" data-ko="13:00 – 18:00" data-en="13:00 – 18:00">13:00 – 18:00</p>
+      <p class="visit-d" data-ko="오프닝은 오후 1시에 시작합니다.<br>예약 없이 자유롭게 입장하실 수 있습니다." data-en="The opening begins at 1:00 PM.<br>No reservation required.">오프닝은 오후 1시에 시작합니다.<br>예약 없이 자유롭게 입장하실 수 있습니다.</p>
+    </div>
+    <div class="visit-item">
+      <p class="visit-k">Venue</p>
+      <p class="visit-v">INSA1010</p>
+      <p class="visit-d" data-ko="서울 종로구 인사동10길 10<br>B1–4F · 안국역 6번 출구 도보 5분" data-en="10 Insadong 10-gil, Jongno-gu, Seoul<br>B1–4F · 5 min from Anguk Stn. Exit 6">서울 종로구 인사동10길 10<br>B1–4F · 안국역 6번 출구 도보 5분</p>
+    </div>
+    <div class="visit-item">
+      <p class="visit-k">Admission</p>
+      <p class="visit-v" data-ko="무료" data-en="Free">무료</p>
+      <p class="visit-d" data-ko="주최 IAF<br>협력기획 테오화랑" data-en="Hosted by IAF<br>Co-curated by Theo Gallery">주최 IAF<br>협력기획 테오화랑</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CTA ───────── -->
+<div class="cta">
+  <div>
+    <p class="cta-text" data-ko="《사랑》을 당신의 곁으로" data-en="Bring 〈Sarang〉 to You">《사랑》을 당신의 곁으로</p>
+    <p class="cta-sub" data-ko="기업 · 지자체 설치 문의와 작품 구매 문의 모두 환영합니다." data-en="Inquiries for corporate and public installation, and for purchase, are all welcome.">기업 · 지자체 설치 문의와 작품 구매 문의 모두 환영합니다.</p>
+  </div>
+  <div class="cta-btns">
+    <a href="/contact" class="btn btn-light" data-ko="문의하기 →" data-en="Inquire →">문의하기 →</a>
+    <a href="https://www.instagram.com/sarangartkr/" target="_blank" rel="noopener" class="btn btn-outline" style="color:#fff;border-color:#444;">Instagram →</a>
+  </div>
+</div>
+
+<script>
+function toggleMenu(){
+  const btn = document.getElementById('hamburger');
+  const overlay = document.getElementById('navOverlay');
+  btn.classList.toggle('open');
+  overlay.classList.toggle('open');
+  document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+}
+function setLang(lang){
+  document.getElementById('root').lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+  });
+  document.querySelectorAll('[data-ko][data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (val !== null) el.innerHTML = val;
+  });
+  try { localStorage.setItem('sarang-lang', lang); } catch(e) {}
+}
+(function(){
+  let saved;
+  try { saved = localStorage.getItem('sarang-lang'); } catch(e) {}
+  if (saved && saved !== 'ko') setLang(saved);
+})();
+</script>
+</body>
+</html>
