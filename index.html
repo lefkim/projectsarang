@@ -377,6 +377,52 @@ nav{ top:var(--banner-h); }
   .hero{ padding-top:calc(56px + var(--banner-h)); }
   .hero-img-wrap{ height:calc(100dvh - 56px - var(--banner-h)); }
 }
+
+/* ===== 히어로 컬러 크로스페이드 ===== */
+.hero-colors{
+  position:relative;
+  width:100%;
+  aspect-ratio:372/548;
+  max-height:calc(100vh - 160px);
+  margin:0 auto;
+}
+.hero-img .hero-colors img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  max-height:none;
+  object-fit:contain;
+  display:block;
+  opacity:0;
+  animation:heroFade 21s linear infinite;
+}
+.hero-colors img:nth-child(1){animation-delay:0s;}
+.hero-colors img:nth-child(2){animation-delay:3.5s;}
+.hero-colors img:nth-child(3){animation-delay:7s;}
+.hero-colors img:nth-child(4){animation-delay:10.5s;}
+.hero-colors img:nth-child(5){animation-delay:14s;}
+.hero-colors img:nth-child(6){animation-delay:17.5s;}
+@keyframes heroFade{
+  0%{opacity:0}
+  2.4%{opacity:1}
+  14.3%{opacity:1}
+  16.7%{opacity:0}
+  100%{opacity:0}
+}
+.hero-img-wrap:hover .hero-colors img{animation-play-state:paused;}
+@media(prefers-reduced-motion:reduce){
+  .hero-colors img{animation:none;opacity:0;}
+  .hero-colors img:nth-child(1){opacity:1;}
+}
+@media(max-width:900px){
+  .hero-colors{max-height:none;aspect-ratio:372/548;}
+}
+@media(max-width:560px){
+  .hero-colors{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    aspect-ratio:auto;max-height:none;
+  }
+}
 </style>
 </head>
 <body>
@@ -424,7 +470,16 @@ nav{ top:var(--banner-h); }
 
   <!-- 좌측: 조형물 이미지 -->
   <div class="hero-img-wrap">
-  <div class="hero-img"><img src="images/hero.jpg" alt="공공조각 《사랑》"></div>
+  <div class="hero-img">
+    <div class="hero-colors">
+      <img src="images/colors/color1.jpg" alt="공공조각 《사랑》 — 레드">
+      <img src="images/colors/color2.jpg" alt="" aria-hidden="true">
+      <img src="images/colors/color3.jpg" alt="" aria-hidden="true">
+      <img src="images/colors/color4.jpg" alt="" aria-hidden="true">
+      <img src="images/colors/color5.jpg" alt="" aria-hidden="true">
+      <img src="images/colors/color6.jpg" alt="" aria-hidden="true">
+    </div>
+  </div>
   <p class="hero-caption">Kim In-tae · Public Art · Project Sarang · 2026</p>
   </div>
 
