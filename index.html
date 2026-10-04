@@ -4,6 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>프로젝트 사랑 / Project Sarang</title>
+<meta name="description" content="지역과 기업의 새로운 랜드마크, 공공조각 《사랑》을 제안합니다. 한글 자음 'ㅅ'의 조형에서 출발한 조각가 김인태의 작품.">
+<link rel="canonical" href="https://sarangart.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Project Sarang">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://sarangart.com/">
+<meta property="og:title" content="프로젝트 사랑 / Project Sarang">
+<meta property="og:description" content="지역과 기업의 새로운 랜드마크, 공공조각 《사랑》을 제안합니다. 한글 자음 'ㅅ'의 조형에서 출발한 조각가 김인태의 작품.">
+<meta property="og:image" content="https://sarangart.com/images/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="프로젝트 사랑 / Project Sarang">
+<meta name="twitter:description" content="지역과 기업의 새로운 랜드마크, 공공조각 《사랑》을 제안합니다. 한글 자음 'ㅅ'의 조형에서 출발한 조각가 김인태의 작품.">
+<meta name="twitter:image" content="https://sarangart.com/images/og-default.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -301,8 +316,8 @@ nav{
     content:'';
     position:absolute;
     bottom:0;left:0;right:0;
-    height:50%;
-    background:linear-gradient(to top,rgba(255,255,255,0.97) 0%,rgba(255,255,255,0.6) 50%,transparent 100%);
+    height:34%;
+    background:linear-gradient(to top,rgba(255,255,255,0.98) 0%,rgba(255,255,255,0.85) 45%,transparent 100%);
     pointer-events:none;
     z-index:2;
   }
@@ -382,8 +397,9 @@ nav{ top:var(--banner-h); }
 .hero-colors{
   position:relative;
   width:100%;
+  max-width:300px;
   aspect-ratio:372/548;
-  max-height:calc(100vh - 160px);
+  max-height:calc(100vh - 200px);
   margin:0 auto;
 }
 .hero-img .hero-colors img{
@@ -418,8 +434,11 @@ nav{ top:var(--banner-h); }
 }
 @media(max-width:560px){
   .hero-colors{
-    position:absolute;inset:0;
-    width:100%;height:100%;
+    position:absolute;
+    top:0;left:50%;
+    transform:translateX(-50%);
+    width:70%;height:64%;
+    max-width:none;
     aspect-ratio:auto;max-height:none;
   }
 }
@@ -437,7 +456,7 @@ nav{ top:var(--banner-h); }
 .ex-modal.show{display:flex;opacity:1;}
 .ex-modal-box{
   position:relative;
-  width:100%;max-width:420px;
+  width:100%;max-width:340px;
   max-height:calc(100dvh - 48px);
   background:var(--white);
   display:flex;flex-direction:column;
